@@ -32,12 +32,12 @@ public class SegmentedSieve {
         int i, j, Ans[] = new int[high - low];                  // Array of size `high-low`
 
         for (i = 0; i < Ans.length; i++)                        // Initializing array with values from `low` to `high`
-            Ans[i] = low + i;
+            Ans[i] = low + i;                                   // Say low = 2, high = 10, Ans = [2, 3, 4, 5, 6, 7, 8, 9]
 
         for (i = 0; i < prime.size(); i++)                      // Looping through all primes smaller than or equal to square root of `high`
             for (j = 0; j < Ans.length; j++)
-                if (Ans[j] % prime.get(i) == 0 && Ans[j] != prime.get(i))               // Eliminating all composites
-                    Ans[j] = 0;
+                if (Ans[j] % prime.get(i) == 0 && Ans[j] != prime.get(i))               // Check if `Ans[j]` is a multiple of `prime[i]` and also they aren't the same number
+                    Ans[j] = 0;                                 // If yes, then set `Ans[j]` to 0
 
         for (j = 0; j < Ans.length; j++)
             if (Ans[j] != 0 && Ans[j] != 1)
